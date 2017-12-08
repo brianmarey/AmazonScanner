@@ -8,46 +8,67 @@ import java.net.URL;
 
 public class AmazonScanner {
 	
-	private static final String[] URLS = {"https://www.amazon.com/s/ref=lp_6127770011_ex_n_5?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A6127770011%2Cn%3A679286011&bbn=6127770011&ie=UTF8&qid=1512672672",
-		"https://www.amazon.com/s/ref=lp_679286011_ex_n_10?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A6127770011%2Cn%3A679271011&bbn=6127770011&ie=UTF8&qid=1512673135",
-		"https://www.amazon.com/s/ref=lp_679271011_ex_n_8?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A6127770011%2Cn%3A679278011&bbn=6127770011&ie=UTF8&qid=1512675751",
-		"https://www.amazon.com/s/ref=lp_679271011_ex_n_9?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A6127770011%2Cn%3A3420963011&bbn=6127770011&ie=UTF8&qid=1512675751",
-		"https://www.amazon.com/s/ref=lp_679271011_ex_n_9?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A6127770011%2Cn%3A3420963011&bbn=6127770011&ie=UTF8&qid=1512675751",
-		"https://www.amazon.com/s/ref=lp_679272011_ex_n_11?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A6127770011%2Cn%3A679303011&bbn=6127770011&ie=UTF8&qid=1512675911",
-		"https://www.amazon.com/s/ref=lp_679272011_ex_n_11?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A6127770011%2Cn%3A679303011&bbn=6127770011&ie=UTF8&qid=1512675911",
-		"https://www.amazon.com/s/ref=lp_679295011_ex_n_14?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A6127770011%2Cn%3A679304011&bbn=6127770011&ie=UTF8&qid=1512675941",
-		"https://www.amazon.com/s/ref=lp_679304011_ex_n_15?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A6127770011%2Cn%3A679305011&bbn=6127770011&ie=UTF8&qid=1512675952",
-		"https://www.amazon.com/s/ref=lp_679305011_ex_n_16?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A6127770011%2Cn%3A679268011&bbn=6127770011&ie=UTF8&qid=1512675965",
-		"https://www.amazon.com/s/ref=lp_679268011_ex_n_17?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A6127770011%2Cn%3A679273011&bbn=6127770011&ie=UTF8&qid=1512675978",
-		"https://www.amazon.com/s/ref=lp_679273011_ex_n_19?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A679312011&bbn=679255011&ie=UTF8&qid=1512675989",
-		"https://www.amazon.com/s/ref=lp_679312011_ex_n_7?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A679313011&bbn=679255011&ie=UTF8&qid=1512676005",
-		"https://www.amazon.com/s/ref=lp_679313011_ex_n_8?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A3420996011&bbn=679255011&ie=UTF8&qid=1512676021",
-		"https://www.amazon.com/s/ref=lp_6127766011_ex_n_19?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A679319011&bbn=679255011&ie=UTF8&qid=1512676057",
-		"https://www.amazon.com/s/ref=lp_679319011_ex_n_13?rh=n%3A7141123011%2Cn%3A7147441011%2Cn%3A679255011%2Cn%3A679334011&bbn=679255011&ie=UTF8&qid=1512676075",
-		"https://www.amazon.com/s/ref=lp_6127771011_ex_n_5?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A6127771011%2Cn%3A679360011&bbn=6127771011&ie=UTF8&qid=1512676121",
-		"https://www.amazon.com/s/ref=lp_679360011_ex_n_10?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A6127771011%2Cn%3A679351011&bbn=6127771011&ie=UTF8&qid=1512676127",
-		"https://www.amazon.com/s/ref=lp_679351011_ex_n_8?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A6127771011%2Cn%3A679353011&bbn=6127771011&ie=UTF8&qid=1512676138",
-		"https://www.amazon.com/s/ref=lp_679353011_ex_n_9?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A6127771011%2Cn%3A3412245011&bbn=6127771011&ie=UTF8&qid=1512676152",
-		"https://www.amazon.com/s/ref=lp_3412245011_ex_n_10?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A6127771011%2Cn%3A679352011&bbn=6127771011&ie=UTF8&qid=1512676163",
-		"https://www.amazon.com/s/ref=lp_679352011_ex_n_11?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A6127771011%2Cn%3A679377011&bbn=6127771011&ie=UTF8&qid=1512676177",
-		"https://www.amazon.com/s/ref=lp_679377011_ex_n_12?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A6127771011%2Cn%3A679339011&bbn=6127771011&ie=UTF8&qid=1512676189",
-		"https://www.amazon.com/s/ref=lp_679339011_ex_n_13?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A6127771011%2Cn%3A679369011&bbn=6127771011&ie=UTF8&qid=1512676201",
-		"https://www.amazon.com/s/ref=lp_679369011_ex_n_15?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A6127771011%2Cn%3A679378011&bbn=6127771011&ie=UTF8&qid=1512676219",
-		"https://www.amazon.com/s/ref=lp_679378011_ex_n_16?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A6127771011%2Cn%3A679348011&bbn=6127771011&ie=UTF8&qid=1512676233",
-		"https://www.amazon.com/s/ref=lp_679348011_ex_n_18?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A679394011&bbn=679337011&ie=UTF8&qid=1512676244",
-		"https://www.amazon.com/s/ref=lp_679394011_ex_n_7?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A679399011&bbn=679337011&ie=UTF8&qid=1512676256",
-		"https://www.amazon.com/s/ref=lp_679399011_ex_n_8?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A679404011&bbn=679337011&ie=UTF8&qid=1512676268",
-		"https://www.amazon.com/s/ref=lp_679404011_ex_n_9?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A679410011&bbn=679337011&ie=UTF8&qid=1512676280",
-		"https://www.amazon.com/s/ref=lp_679410011_ex_n_11?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A679415011&bbn=679337011&ie=UTF8&qid=1512676293",
-		"https://www.amazon.com/s/ref=lp_679415011_ex_n_12?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A679416011&bbn=679337011&ie=UTF8&qid=1512676304",
-		"https://www.amazon.com/s/ref=lp_679425011_ex_n_14?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A679425011%2Cn%3A10509644011&bbn=679425011&ie=UTF8&qid=1512676327",
-		"https://www.amazon.com/s/ref=lp_10509644011_ex_n_15?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A679425011%2Cn%3A10509645011&bbn=679425011&ie=UTF8&qid=1512676336",
-		"https://www.amazon.com/s/ref=lp_10509645011_ex_n_16?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A679425011%2Cn%3A10509650011&bbn=679425011&ie=UTF8&qid=1512676348",
-		"https://www.amazon.com/s/ref=lp_10509650011_ex_n_17?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A679425011%2Cn%3A679365011&bbn=679425011&ie=UTF8&qid=1512676361",
-		"https://www.amazon.com/s/ref=lp_679365011_ex_n_18?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A679425011%2Cn%3A10509646011&bbn=679425011&ie=UTF8&qid=1512676373",
-		"https://www.amazon.com/s/ref=lp_10509646011_ex_n_19?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A679425011%2Cn%3A10509649011&bbn=679425011&ie=UTF8&qid=1512676385",
-		"https://www.amazon.com/s/ref=lp_10509649011_ex_n_20?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A679433011&bbn=679337011&ie=UTF8&qid=1512676397",
-		"https://www.amazon.com/s/ref=lp_679433011_ex_n_15?rh=n%3A7141123011%2Cn%3A7147440011%2Cn%3A679337011%2Cn%3A679442011&bbn=679337011&ie=UTF8&qid=1512676410"
+	private static final String[] URLS = {"https://www.amazon.com/s/ref=lp_196601011_nr_n_0?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A256565011&bbn=196601011&ie=UTF8&qid=1512744436&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_1?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A2522032011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_2?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A330390011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_3?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A196603011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_4?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A196604011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_5?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A255237011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_6?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A2522033011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_7?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A1243731011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_9?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A196607011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_10?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A196610011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_14?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A166048011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_11?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A196612011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_12?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A166415011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_13?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A166273011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_14?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A166048011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_15?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A196608011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_16?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A389860011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_17?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A2522034011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_196601011_nr_n_18?fst=as%3Aoff&rh=n%3A165793011%2Cn%3A%21165795011%2Cn%3A196601011%2Cn%3A166861011&bbn=196601011&ie=UTF8&qid=1512744464&rnid=196601011",
+		"https://www.amazon.com/s/ref=lp_166736011_nr_n_1?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166736011%2Cn%3A166737011&bbn=166736011&ie=UTF8&qid=1512744787&rnid=166736011",
+		"https://www.amazon.com/s/ref=lp_166736011_nr_n_2?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166736011%2Cn%3A166864011&bbn=166736011&ie=UTF8&qid=1512744787&rnid=166736011",
+		"https://www.amazon.com/s/ref=lp_166736011_nr_n_3?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166736011%2Cn%3A322259011&bbn=166736011&ie=UTF8&qid=1512744787&rnid=166736011",
+		"https://www.amazon.com/s/ref=lp_166736011_nr_n_4?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166736011%2Cn%3A16027271&bbn=166736011&ie=UTF8&qid=1512744787&rnid=166736011",
+		"https://www.amazon.com/s/ref=lp_166736011_nr_n_7?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166736011%2Cn%3A166739011&bbn=166736011&ie=UTF8&qid=1512744787&rnid=166736011",
+		"https://www.amazon.com/s/ref=lp_166736011_nr_n_6?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166736011%2Cn%3A239221011&bbn=166736011&ie=UTF8&qid=1512744787&rnid=166736011",
+		"https://www.amazon.com/s/ref=lp_166740011_nr_n_0?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166736011%2Cn%3A166740011%2Cn%3A322263011&bbn=166740011&ie=UTF8&qid=1512744882&rnid=166740011",
+		"https://www.amazon.com/s/ref=lp_166740011_nr_n_1?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166736011%2Cn%3A166740011%2Cn%3A322264011&bbn=166740011&ie=UTF8&qid=1512744882&rnid=166740011",
+		"https://www.amazon.com/s/ref=lp_166740011_nr_n_2?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166736011%2Cn%3A166740011%2Cn%3A322265011&bbn=166740011&ie=UTF8&qid=1512744882&rnid=166740011",
+		"https://www.amazon.com/s/ref=lp_166740011_nr_n_3?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166736011%2Cn%3A166740011%2Cn%3A322266011&bbn=166740011&ie=UTF8&qid=1512744882&rnid=166740011",
+		"https://www.amazon.com/s/ref=lp_1272297011_nr_n_0?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166835011%2Cn%3A1272297011%2Cn%3A166838011&bbn=1272297011&ie=UTF8&qid=1512744967&rnid=1272297011",
+		"https://www.amazon.com/s/ref=lp_1272297011_nr_n_1?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166835011%2Cn%3A1272297011%2Cn%3A173209011&bbn=1272297011&ie=UTF8&qid=1512744983&rnid=1272297011",
+		"https://www.amazon.com/s/ref=lp_1272297011_nr_n_2?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166835011%2Cn%3A1272297011%2Cn%3A166837011&bbn=1272297011&ie=UTF8&qid=1512744983&rnid=1272297011",
+		"https://www.amazon.com/s/ref=lp_1272297011_nr_n_3?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166835011%2Cn%3A1272297011%2Cn%3A166839011&bbn=1272297011&ie=UTF8&qid=1512744983&rnid=1272297011",
+		"https://www.amazon.com/s/ref=lp_1272297011_nr_n_4?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166835011%2Cn%3A1272297011%2Cn%3A8457131011&bbn=1272297011&ie=UTF8&qid=1512744983&rnid=1272297011",
+		"https://www.amazon.com/s/ref=lp_1272297011_nr_n_5?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166835011%2Cn%3A1272297011%2Cn%3A166849011&bbn=1272297011&ie=UTF8&qid=1512744983&rnid=1272297011",
+		"https://www.amazon.com/b/ref=Baby_1214_CategoryTiles_PremiumStrollers_Standard/ref=s9_acss_bw_ct_refTest_ct6_a1_w?_encoding=UTF8&ie=UTF8&node=7696452011&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-4&pf_rd_r=8MNDRJEKA6BXEXF4EM12&pf_rd_t=101&pf_rd_p=5d0447d3-9e65-52b2-988d-8b52016748eb&pf_rd_i=166842011",
+		"https://www.amazon.com/s/ref=s9_acss_bw_ct_refTest_ct2_cta_w?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A!165797011%2Cn%3A8446318011%2Cn%3A166842011%2Cn%3A370094011&bbn=370094011&ie=UTF8&qid=1438365509&lo=baby-products&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-12&pf_rd_r=8MNDRJEKA6BXEXF4EM12&pf_rd_t=101&pf_rd_p=5d0447d3-9e65-52b2-988d-8b52016748eb&pf_rd_i=166842011",
+		"https://www.amazon.com/s/ref=s9_acss_bw_ct_refTest_ct5_cta_w?rh=i%3Ababy-products%2Cn%3A165796011%2Cn%3A!165797011%2Cn%3A8446318011%2Cn%3A166842011%2Cn%3A166846011&ie=UTF8&lo=baby-products&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-12&pf_rd_r=8MNDRJEKA6BXEXF4EM12&pf_rd_t=101&pf_rd_p=5d0447d3-9e65-52b2-988d-8b52016748eb&pf_rd_i=166842011",
+		"https://www.amazon.com/s/ref=s9_acss_bw_ct_refTest_ct4_cta_w?rh=i%3Ababy-products%2Cn%3A165796011%2Cn%3A!165797011%2Cn%3A8446318011%2Cn%3A166842011%2Cn%3A166845011&bbn=166845011&ie=UTF8&lo=baby-products&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-12&pf_rd_r=8MNDRJEKA6BXEXF4EM12&pf_rd_t=101&pf_rd_p=5d0447d3-9e65-52b2-988d-8b52016748eb&pf_rd_i=166842011",
+		"https://www.amazon.com/s/ref=lp_166765011_nr_n_0?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166764011%2Cn%3A166765011%2Cn%3A6104938011&bbn=166765011&ie=UTF8&qid=1512745207&rnid=166765011",
+		"https://www.amazon.com/s/ref=lp_166765011_nr_n_1?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166764011%2Cn%3A166765011%2Cn%3A6104939011&bbn=166765011&ie=UTF8&qid=1512745207&rnid=166765011",
+		"https://www.amazon.com/s/ref=lp_166764011_nr_n_1?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166764011%2Cn%3A166811011&bbn=166764011&ie=UTF8&qid=1512745199&rnid=166764011",
+		"https://www.amazon.com/s/ref=lp_166764011_nr_n_4?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166764011%2Cn%3A166767011&bbn=166764011&ie=UTF8&qid=1512745199&rnid=166764011",
+		"https://www.amazon.com/s/ref=lp_166764011_nr_n_6?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166764011%2Cn%3A322263011&bbn=166764011&ie=UTF8&qid=1512745199&rnid=166764011",
+		"https://www.amazon.com/s/ref=lp_166784011_nr_n_1?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166777011%2Cn%3A166784011%2Cn%3A166786011&bbn=166784011&ie=UTF8&qid=1512745316&rnid=166784011",
+		"https://www.amazon.com/b/ref=cato_feeding_highchairs/ref=s9_acss_bw_ct_refTest_ct3_a2_w?_encoding=UTF8&ie=UTF8&node=166796011&pf_rd_m=ATVPDKIKX0DER&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-4&pf_rd_s=merchandised-search-4&pf_rd_r=5TR3BDVX3Y5DRKNS0VQN&pf_rd_r=1RDR8VDBXSY5V8RVAT7E&pf_rd_t=101&pf_rd_t=101&pf_rd_p=1bdc3694-0ec4-5698-b1ad-05e8d3a7589d&pf_rd_p=1865895602&pf_rd_i=166777011&pf_rd_i=166777011",
+		"https://www.amazon.com/s/ref=s9_acss_bw_ct_refTest_ct6_a1_w?rh=i%3Ababy-products%2Cn%3A166801011&ie=UTF8&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-11&pf_rd_r=5TR3BDVX3Y5DRKNS0VQN&pf_rd_t=101&pf_rd_p=1bdc3694-0ec4-5698-b1ad-05e8d3a7589d&pf_rd_i=166777011",
+		"https://www.amazon.com/s/ref=s9_acss_bw_ct_refTest_ct7_a1_w?rh=i%3Ababy-products%2Cn%3A166795011&ie=UTF8&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-11&pf_rd_r=5TR3BDVX3Y5DRKNS0VQN&pf_rd_t=101&pf_rd_p=1bdc3694-0ec4-5698-b1ad-05e8d3a7589d&pf_rd_i=166777011",
+		"https://www.amazon.com/s/ref=s9_acss_bw_ct_refTest_ct1_cta_w?rh=i%3Ababy-products%2Cn%3A166829011&ie=UTF8&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-11&pf_rd_r=8HBXW90Y7T66E4GV1SD5&pf_rd_t=101&pf_rd_p=96ebec69-2aac-5e88-afde-8083b83b4dc1&pf_rd_i=166828011",
+		"https://www.amazon.com/s/ref=s9_acss_bw_ct_refTest_ct2_a1_w?rh=i%3Ababy-products%2Cn%3A165796011%2Cn%3A!165797011%2Cn%3A166828011%2Cn%3A166841011%2Cp_n_feature_keywords_browse-bin%3A5590737011&bbn=166841011&ie=UTF8&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-11&pf_rd_r=8HBXW90Y7T66E4GV1SD5&pf_rd_t=101&pf_rd_p=96ebec69-2aac-5e88-afde-8083b83b4dc1&pf_rd_i=166828011",
+		"https://www.amazon.com/s/ref=s9_acss_bw_ct_refTest_ct2_a4_w?rh=i%3Ababy-products%2Cn%3A165796011%2Cn%3A!165797011%2Cn%3A166828011%2Cn%3A2237484011&bbn=166828011&ie=UTF8&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-11&pf_rd_r=8HBXW90Y7T66E4GV1SD5&pf_rd_t=101&pf_rd_p=96ebec69-2aac-5e88-afde-8083b83b4dc1&pf_rd_i=166828011",
+		"https://www.amazon.com/s/ref=s9_acss_bw_ct_refTest_ct3_a1_w?rh=i%3Ababy-products%2Cn%3A166853011&ie=UTF8&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-11&pf_rd_r=8HBXW90Y7T66E4GV1SD5&pf_rd_t=101&pf_rd_p=96ebec69-2aac-5e88-afde-8083b83b4dc1&pf_rd_i=166828011",
+		"https://www.amazon.com/s/ref=s9_acss_bw_ct_refTest_ct3_a2_w?rh=i%3Ababy-products%2Cn%3A165796011%2Cn%3A!165797011%2Cn%3A166828011%2Cn%3A166850011%2Cn%3A166851011&bbn=166850011&ie=UTF8&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-11&pf_rd_r=8HBXW90Y7T66E4GV1SD5&pf_rd_t=101&pf_rd_p=96ebec69-2aac-5e88-afde-8083b83b4dc1&pf_rd_i=166828011",
+		"https://www.amazon.com/s/ref=s9_acss_bw_ct_refTest_ct3_a3_w?rh=i%3Ababy-products%2Cn%3A165796011%2Cn%3A!165797011%2Cn%3A166828011%2Cn%3A166850011%2Cn%3A166852011&bbn=166850011&ie=UTF8&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-11&pf_rd_r=8HBXW90Y7T66E4GV1SD5&pf_rd_t=101&pf_rd_p=96ebec69-2aac-5e88-afde-8083b83b4dc1&pf_rd_i=166828011",
+		"https://www.amazon.com/s/ref=s9_acss_bw_ct_refTest_ct3_a4_w?rh=i%3Ababy-products%2Cn%3A322268011&ie=UTF8&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-11&pf_rd_r=8HBXW90Y7T66E4GV1SD5&pf_rd_t=101&pf_rd_p=96ebec69-2aac-5e88-afde-8083b83b4dc1&pf_rd_i=166828011",
+		"https://www.amazon.com/s/ref=s9_acss_bw_ct_refTest_ct4_a1_w?rh=i%3Ababy-products%2Cn%3A196609011&ie=UTF8&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-11&pf_rd_r=8HBXW90Y7T66E4GV1SD5&pf_rd_t=101&pf_rd_p=96ebec69-2aac-5e88-afde-8083b83b4dc1&pf_rd_i=166828011",
+		"https://www.amazon.com/s/ref=s9_acss_bw_ct_refTest_ct4_a2_w?rh=i%3Ababy-products%2Cn%3A165796011%2Cn%3A!165797011%2Cn%3A166828011%2Cn%3A239225011&bbn=166828011&ie=UTF8&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-11&pf_rd_r=8HBXW90Y7T66E4GV1SD5&pf_rd_t=101&pf_rd_p=96ebec69-2aac-5e88-afde-8083b83b4dc1&pf_rd_i=166828011",
+		"https://www.amazon.com/s/ref=lp_166887011_nr_n_1?fst=as%3Aoff&rh=n%3A165796011%2Cn%3A%21165797011%2Cn%3A166887011%2Cn%3A166889011&bbn=166887011&ie=UTF8&qid=1512745669&rnid=166887011",
+		"https://www.amazon.com/b/ref=s9_acsd_hfnv_hd_bw_bBIEvz_ct_x_ct03_w?_encoding=UTF8&node=166888011&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-4&pf_rd_r=PP8JP0HW78ZBGF727248&pf_rd_t=101&pf_rd_p=073ce383-a477-535f-816e-ad55994fee19&pf_rd_i=166887011",
+		"https://www.amazon.com/b/ref=sr_aj?node=898402&ajr=0",
+		"https://www.amazon.com/b/ref=sr_aj?node=166870011&ajr=0"
 	};
 	
 	private StringBuilder categoriesBuilder = new StringBuilder();
@@ -127,8 +148,10 @@ public class AmazonScanner {
 			String word = contents.substring(start,end);
 			categoriesBuilder.append("{\"");
 			categoriesBuilder.append(word);
-			categoriesBuilder.append("\",\"\"},");
+			categoriesBuilder.append("\",\"\"},\n");
 			//System.err.println(word);
+		} else {
+			categoriesBuilder.append("{\"\",\"\"},\n");
 		}
 	}
 	
@@ -148,7 +171,9 @@ public class AmazonScanner {
 				nodesBuilder.append(word);
 				nodesBuilder.append("\",");
 				//System.err.println(word);	
-			}			
+			} else {
+				nodesBuilder.append("\"\",");
+			}
 		}
 	}
 	 
@@ -165,6 +190,8 @@ public class AmazonScanner {
 			brandsBuilder.append(word);
 			brandsBuilder.append("\",\n");
 			//System.err.println(word);
+		} else {
+			brandsBuilder.append("\"\",\n");
 		}
 	}
 }
